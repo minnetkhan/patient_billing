@@ -10,23 +10,22 @@ import android.widget.Toast;
 
 /*
     ...
-        First Screen of the App
-        Log in button...
+        This class is called after login is successful.
     ...
  */
-public class MainActivity extends AppCompatActivity {
+public class LoggedInScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_logged_in_screen);
     }
 
-    public void onClickLogin(View view) {
+    public void onClickPatientDetails(View view) {
         /*
-            Goto LoggedInScreen.java
+            goto PatientDetails.java
          */
-        Intent intent = new Intent(this, LoggedInScreen.class);
+        Intent intent = new Intent(this, PatientDetails.class);
         startActivity(intent);
     }
 }
