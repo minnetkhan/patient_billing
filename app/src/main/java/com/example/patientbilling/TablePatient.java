@@ -15,8 +15,8 @@ public class TablePatient {
         public static final String PATIENT_NAME = "name";
         public static final String PATIENT_CONTACT_NO = "contact";
         public static final String PATIENT_CREATED_AT = "created_at";
-        public static final String PATIENT_DOB = "dob";
-        public static final String PATIENT_ADDRESS = "address";
+        public static final String PATIENT_GENDER = "gender";
+        public static final String PATIENT_BLOODGROUP = "bg";
         public static final String PATIENT_EP_NAME = "e_name";
         public static final String PATIENT_EP_CONTACT = "e_contact";
 

@@ -28,4 +28,12 @@ public class LoggedInScreen extends AppCompatActivity {
         Intent intent = new Intent(this, PatientDetails.class);
         startActivity(intent);
     }
+
+    public void onClickAllPatientDetails(View view) {
+        /*
+            goto PatientDetails.java
+         */
+        Intent intent = new Intent(this, AllPatientDetails.class);
+        startActivity(intent);
+    }
 }
