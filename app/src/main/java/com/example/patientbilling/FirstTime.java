@@ -23,6 +23,12 @@ public class FirstTime extends Application {
             db.InsertPatientData(db, "Minnet", 2, "m", "AB+", 23, "abc");
             db.InsertPatientData(db, "Sonali", 13, "f", "AB+", 23, "abc");
 
+            db.InsertDoctorData(db, "D1", 1, "f", "AB+", 23);
+            db.InsertDoctorData(db, "D2", 2, "m", "AB+", 23);
+            db.InsertDoctorData(db, "D3", 13, "f", "AB+", 23);
+
+
+
             Log.d("Inside if","bool is still false");
 
             SharedPreferences.Editor editor = ins.edit();

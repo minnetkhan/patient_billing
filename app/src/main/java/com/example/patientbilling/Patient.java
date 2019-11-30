@@ -2,6 +2,11 @@ package com.example.patientbilling;
 
 public class Patient extends Person {
 
+    Patient()
+    {
+
+    }
+
     public Patient(String name, String personID, int contactNumber, String gender, String blood_group, String emergencyPersonContactName, int emergencyPersonContactNumber) {
         super(name, personID, contactNumber, gender, blood_group);
         EmergencyPersonContactName = emergencyPersonContactName;
@@ -28,6 +33,12 @@ public class Patient extends Person {
     }
 
 
+
+    public void updateEmergencyPersonDetails()
+    {
+
+
+    }
 
 
 

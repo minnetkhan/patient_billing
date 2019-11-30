@@ -10,7 +10,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddPatient"></activity>
+        <activity android:name=".WardDashboard"></activity>
+        <activity android:name=".TreatmentDashboard" />
+        <activity android:name=".DoctorsDashboard" />
+        <activity android:name=".MainDashBoard" />
+        <activity android:name=".AddPatient" />
         <activity android:name=".AllPatientDetails" />
         <activity android:name=".PatientDetails" />
         <activity android:name=".LoggedInScreen" />

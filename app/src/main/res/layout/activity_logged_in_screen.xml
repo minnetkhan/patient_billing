@@ -39,6 +39,7 @@ tools:context=".LoggedInScreen">
         android:layout_centerVertical="true"
         android:id="@+id/AddPatient"
         android:text="Add Patient"
+        android:onClick="onClickAddPatient"
         android:layout_below="@id/Bill" />
 
 </RelativeLayout>

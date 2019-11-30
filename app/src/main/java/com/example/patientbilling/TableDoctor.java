@@ -13,8 +13,8 @@ public class TableDoctor {
         public static final String Doctor_NAME = "d_name";
         public static final String Doctor_CONTACT_NO = "d_contact";
         public static final String Doctor_CREATED_AT = "d_created_at";
-        public static final String Doctor_DOB = "d_dob";
-        public static final String Doctor_ADDRESS = "d_address";
+        public static final String Doctor_BLOODGROUP = "d_bg";
+        public static final String Doctor_GENDER = "d_g";
         public static final String Doctor_FEE = "d_fee";
 
         public static final String TABLE_DOCTOR = "doctor";
