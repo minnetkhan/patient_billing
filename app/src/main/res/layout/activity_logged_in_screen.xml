@@ -12,7 +12,9 @@ tools:context=".LoggedInScreen">
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:id="@+id/AllPatient"
-        android:text="View All Patient Details" />
+        android:text="View All Patient Details"
+        android:onClick="onClickAllPatientDetails"
+        />
 
     <Button
         android:layout_width="match_parent"
@@ -30,5 +32,13 @@ tools:context=".LoggedInScreen">
         android:id="@+id/Bill"
         android:text="View Patient Bill"
         android:layout_below="@id/Patient" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:id="@+id/AddPatient"
+        android:text="Add Patient"
+        android:layout_below="@id/Bill" />
 
 </RelativeLayout>

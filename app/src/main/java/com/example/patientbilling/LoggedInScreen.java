@@ -20,13 +20,6 @@ public class LoggedInScreen extends AppCompatActivity implements PatientIdFragme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logged_in_screen);
-
-    }
-
-    public void onComplete(String patientID) {
-        Intent intent = new Intent(this, PatientDetails.class);
-        intent.putExtra(KeyValuePair.KEY_PATIENT_ID, patientID);
-        startActivity(intent);
     }
 
     public void onClickPatientDetails(View view) {
@@ -39,4 +32,18 @@ public class LoggedInScreen extends AppCompatActivity implements PatientIdFragme
 
     }
 
+
+    public void onComplete(String patientID) {
+        Intent intent = new Intent(this, PatientDetails.class);
+        intent.putExtra(KeyValuePair.KEY_PATIENT_ID, patientID);
+        startActivity(intent);
+    }
+
+    public void onClickAllPatientDetails(View view) {
+        /*
+            goto PatientDetails.java
+         */
+        Intent intent = new Intent(this, AllPatientDetails.class);
+        startActivity(intent);
+    }
 }
