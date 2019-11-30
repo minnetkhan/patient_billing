@@ -2,4 +2,15 @@
     <string name="app_name">Patient Billing</string>
     <string name="layout_submit">Submit</string>
     <string name="layout_cancel">Cancel</string>
+    <string name="bg1">O+</string>
+    <string name="bg2">O-</string>
+    <string name="bg3">AB+</string>
+    <string name="bg4">AB-</string>
+    <string name="bg5">A+</string>
+    <string name="bg6">A-</string>
+    <string name="bg7">B+</string>
+    <string name="bg8">B-</string>
+
+    <string name="g1">Male</string>
+    <string name="g2">Female</string>
 </resources>

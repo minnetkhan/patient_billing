@@ -46,4 +46,20 @@ public class LoggedInScreen extends AppCompatActivity implements PatientIdFragme
         Intent intent = new Intent(this, AllPatientDetails.class);
         startActivity(intent);
     }
+
+    public void onClickAddPatient(View view) {
+        /*
+            goto PatientDetails.java
+         */
+        Intent intent = new Intent(this, AddPatient.class);
+        startActivity(intent);
+    }
+
+    public void onClickGenerateBill(View view) {
+        /*
+            goto PatientDetails.java
+         */
+        Intent intent = new Intent(this, BillGenerate.class);
+        startActivity(intent);
+    }
 }
