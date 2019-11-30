@@ -10,7 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WardDashboard"></activity>
+        <activity android:name=".BillGenerate"></activity>
+        <activity android:name=".DoctorDetails" />
+        <activity android:name=".UpdateFee" />
+        <activity android:name=".WardDashboard" />
         <activity android:name=".TreatmentDashboard" />
         <activity android:name=".DoctorsDashboard" />
         <activity android:name=".MainDashBoard" />

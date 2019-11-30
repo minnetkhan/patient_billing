@@ -31,7 +31,9 @@ tools:context=".LoggedInScreen">
         android:layout_centerVertical="true"
         android:id="@+id/Bill"
         android:text="View Patient Bill"
-        android:layout_below="@id/Patient" />
+        android:layout_below="@id/Patient"
+        android:onClick="onClickGenerateBill"
+        />
 
     <Button
         android:layout_width="match_parent"

@@ -55,9 +55,9 @@ public class HospitalDatabase extends SQLiteOpenHelper {
                 TableWard.TableWardClass.ROOM_TYPE +" VARCHAR(255), "+
                 TableWard.TableWardClass.PER_DAY_CHARGES + " INT(11), " +
                 TableWard.TableWardClass.ADMISSION_DATE + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
-                TableWard.TableWardClass.DISCHARGE_DATE + " INT(11), " +
+                TableWard.TableWardClass.DISCHARGE_DATE + " INTEGER DEFAULT 0, " +
                 TableWard.TableWardClass.PATIENT_ID + " INT(11), " +
-                " FOREIGN KEY (" + TableWard.TableWardClass.WARD_ID +") REFERENCES "+
+                " FOREIGN KEY (" + TableWard.TableWardClass.PATIENT_ID +") REFERENCES "+
                     TablePatient.TablePatientClass.TABLE_PATIENT +"("+
                     TablePatient.TablePatientClass.PATIENT_ID + ")" +
             ")";
@@ -174,19 +174,24 @@ public class HospitalDatabase extends SQLiteOpenHelper {
     }
 
 
-    public String GetDoctorData()
+    public String GetOneDoctorData(String doctor_ID)
     {
-        db = getWritableDatabase();
-        Cursor c = db.rawQuery("Select * from  doctor", null );
-        c.moveToFirst();
-        String patient="";
-        for( int i =0; i<c.getCount();i++)
-        {
-            patient = patient+"\n\n Name:"+c.getString(c.getColumnIndex("d_ame"))+"\n Contact No:"+
-                    c.getString(c.getColumnIndex("d_contact"))+ "\n Gender:"+ c.getString(c.getColumnIndex("d_g"))+"\n BloodGroup:" +
-                    c.getString(c.getColumnIndex("d_bg"))+"";
-            c.moveToNext();
+        String patient = "";
+
+        db = getReadableDatabase();
+        Cursor c = db.rawQuery("Select * from doctor where id = ?", new String[]{doctor_ID});
+
+        if(c != null) {
+            c.moveToFirst();
         }
+
+        int count = c.getColumnCount();
+
+        for(int i=0; i<count; i++) {
+            patient = patient + " " + c.getString(i);
+        }
+
+        patient = patient.trim();
 
         return patient;
     }
@@ -203,6 +208,40 @@ public class HospitalDatabase extends SQLiteOpenHelper {
         db.insert(TableDoctor.TableDoctorClass.TABLE_DOCTOR, null, c);
         Log.d("Inside InsertUSerData", "One row inserted");
     }
+
+    public void InsertTreatmentData(HospitalDatabase hd,  String t_name, String t_type, int t_charges)
+    {
+        db = getWritableDatabase();
+        ContentValues c = new ContentValues();
+        c.put(TableTreatment.TableTreatmentClass.TREATMENT_NAME  , t_name);
+        c.put(TableTreatment.TableTreatmentClass.TREATMENT_TYPE , t_type);
+        c.put(TableTreatment.TableTreatmentClass.TREATMENT_CHARGES, t_charges);
+        db.insert(TableTreatment.TableTreatmentClass.TABLE_TREATMENT, null, c);
+        Log.d("Inside InsertUSerData", "One row inserted");
+    }
+
+    public void InsertWardData(HospitalDatabase hd,  int rn, String w_type, int w_charges, int p_id)
+    {
+        db = getWritableDatabase();
+        ContentValues c = new ContentValues();
+        c.put(TableWard.TableWardClass.ROOM_NO  , rn);
+        c.put(TableWard.TableWardClass.ROOM_TYPE , w_type);
+        c.put(TableWard.TableWardClass.PER_DAY_CHARGES, w_charges);
+        c.put(TableWard.TableWardClass.PATIENT_ID, p_id);
+        db.insert(TableTreatment.TableTreatmentClass.TABLE_TREATMENT, null, c);
+        Log.d("Inside InsertUSerData", "One row inserted");
+    }
+
+    public void InsertPatDocData(HospitalDatabase hd,  int d_id, int p_id)
+    {
+        db = getWritableDatabase();
+        ContentValues c = new ContentValues();
+        c.put(TablePatientDoctor.TablePatientDoctorClass.R_DOCTOR_ID  , d_id);
+        c.put(TablePatientDoctor.TablePatientDoctorClass.R_PATIENT_ID, p_id);
+        db.insert(TablePatientDoctor.TablePatientDoctorClass.TABLEPATIENTDOCTOR , null, c);
+        Log.d("Inside InsertUSerData", "One row inserted");
+    }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
