@@ -28,8 +28,11 @@ public class PatientDetails extends AppCompatActivity {
 
         HospitalDatabase hospitalDatabase = new HospitalDatabase(this);
         String pDetails = hospitalDatabase.getOnePatientData(patientID);
+        String wDetails = hospitalDatabase.getPatientWardDetails(patientID);
 
         String patientDetails[] = pDetails.split(" ");
+        String wardDetails[] = wDetails.split(" ");
+
         TextView tv1 = (TextView) findViewById(R.id.patient_name);
         tv1.setText(patientDetails[1]);
 
@@ -47,6 +50,10 @@ public class PatientDetails extends AppCompatActivity {
 
         TextView tv6 = (TextView) findViewById(R.id.patient_emergency_person_contact);
         tv6.setText(patientDetails[5]);
+
+    }
+
+    public void onClickEditPatientDetails(View view) {
 
     }
 
