@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter Patient ID"
+        android:textSize="22sp"
+        android:textAlignment="center"
+        />
+
+    <EditText
+        android:id="@+id/patient_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Patient ID"
+        android:layout_marginTop="10dp"
+        android:textSize="22sp"/>
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <Button-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Submit"-->
+<!--            android:textSize="22sp"-->
+<!--            android:layout_weight="1"-->
+<!--            style="?android:attr/borderlessButtonStyle"-->
+<!--            col/>-->
+
+<!--        <Button-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Submit"-->
+<!--            android:textSize="22sp"-->
+<!--            android:layout_weight="1"-->
+<!--            style="?android:attr/borderlessButtonStyle" />-->
+<!--    </LinearLayout>-->
+
+</LinearLayout>
