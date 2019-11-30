@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         /*
             Goto LoggedInScreen.java
          */
-        Intent intent = new Intent(this, LoggedInScreen.class);
+        Intent intent = new Intent(this, MainDashBoard.class);
         startActivity(intent);
     }
 }

@@ -40,8 +40,8 @@ public class HospitalDatabase extends SQLiteOpenHelper {
                 TableDoctor.TableDoctorClass.Doctor_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 TableDoctor.TableDoctorClass.Doctor_NAME +" VARCHAR(255)," +
                 TableDoctor.TableDoctorClass.Doctor_CONTACT_NO +" INT(11), "+
-                TableDoctor.TableDoctorClass.Doctor_ADDRESS + " VARCHAR(255), " +
-                TableDoctor.TableDoctorClass.Doctor_DOB + " VARCHAR(255), " +
+                TableDoctor.TableDoctorClass.Doctor_BLOODGROUP + " VARCHAR(255), " +
+                TableDoctor.TableDoctorClass.Doctor_GENDER + " VARCHAR(255), " +
                 TableDoctor.TableDoctorClass.Doctor_FEE + " INT(11), " +
                 TableDoctor.TableDoctorClass.Doctor_CREATED_AT + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP " +
             ")";
@@ -148,6 +148,37 @@ public class HospitalDatabase extends SQLiteOpenHelper {
         }
 
         return patient;
+    }
+
+
+    public String GetDoctorData()
+    {
+        db = getWritableDatabase();
+        Cursor c = db.rawQuery("Select * from  doctor", null );
+        c.moveToFirst();
+        String patient="";
+        for( int i =0; i<c.getCount();i++)
+        {
+            patient = patient+"\n\n Name:"+c.getString(c.getColumnIndex("d_ame"))+"\n Contact No:"+
+                    c.getString(c.getColumnIndex("d_contact"))+ "\n Gender:"+ c.getString(c.getColumnIndex("d_g"))+"\n BloodGroup:" +
+                    c.getString(c.getColumnIndex("d_bg"))+"";
+            c.moveToNext();
+        }
+
+        return patient;
+    }
+
+    public void InsertDoctorData(HospitalDatabase hd,  String d_name, int contact, String gender, String bg, int fee)
+    {
+        db = getWritableDatabase();
+        ContentValues c = new ContentValues();
+        c.put(TableDoctor.TableDoctorClass.Doctor_NAME , d_name);
+        c.put(TableDoctor.TableDoctorClass.Doctor_CONTACT_NO , contact);
+        c.put(TableDoctor.TableDoctorClass.Doctor_GENDER, gender);
+        c.put(TableDoctor.TableDoctorClass.Doctor_BLOODGROUP, bg);
+        c.put(TableDoctor.TableDoctorClass.Doctor_FEE, fee);
+        db.insert(TableDoctor.TableDoctorClass.TABLE_DOCTOR, null, c);
+        Log.d("Inside InsertUSerData", "One row inserted");
     }
 
     @Override

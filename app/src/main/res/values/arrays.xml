@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="bgtypelist">
+        <item>@string/bg1</item>
+        <item>@string/bg2</item>
+        <item>@string/bg3</item>
+        <item>@string/bg4</item>
+        <item>@string/bg6</item>
+        <item>@string/bg5</item>
+        <item>@string/bg6</item>
+        <item>@string/bg7</item>
+        <item>@string/bg8</item>
+    </string-array>
+
+    <string-array name="gtypelist">
+        <item>@string/g1</item>
+        <item>@string/g2</item>
+    </string-array>
+</resources>

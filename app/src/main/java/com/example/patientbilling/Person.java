@@ -1,6 +1,14 @@
 package com.example.patientbilling;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
+
 public class Person {
+
+    SQLiteDatabase db;
+
 
     public String getName() {
         return name;
@@ -60,6 +68,22 @@ public class Person {
     {
 
     }
+
+    public void updateDetails(HospitalDatabase hd, String name, int contactNumber, String gender, String blood_group, String ep_name, int ep_contact)
+    {
+        db = hd.getReadableDatabase();
+        ContentValues c = new ContentValues();
+        c.put(TablePatient.TablePatientClass.PATIENT_NAME , name);
+        c.put(TablePatient.TablePatientClass.PATIENT_CONTACT_NO, contactNumber);
+        c.put(TablePatient.TablePatientClass.PATIENT_GENDER, gender);
+        c.put(TablePatient.TablePatientClass.PATIENT_BLOODGROUP, blood_group);
+        c.put(TablePatient.TablePatientClass.PATIENT_EP_CONTACT, ep_contact);
+        c.put(TablePatient.TablePatientClass.PATIENT_EP_NAME, ep_name);
+        db.insert(TablePatient.TablePatientClass.TABLE_PATIENT, null, c);
+        Log.d("Inside InsertUSerData", "One row inserted");
+    }
+
+
 
 
 }
