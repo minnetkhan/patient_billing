@@ -258,4 +258,25 @@ public class HospitalDatabase extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public String getPatientWardDetails(String patient_ID) {
+        String wardDetails = "";
+
+        db = getReadableDatabase();
+        Cursor c = db.rawQuery("Select * from patient where id = ?", new String[]{patient_ID});
+
+        if(c != null) {
+            c.moveToFirst();
+        }
+
+        int count = c.getColumnCount();
+
+        for(int i=0; i<count; i++) {
+            wardDetails = wardDetails + " " + c.getString(i);
+        }
+
+        wardDetails = wardDetails.trim();
+
+        return wardDetails;
+    }
+
 }

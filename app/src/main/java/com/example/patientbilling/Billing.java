@@ -26,6 +26,13 @@ public class Billing {
         this.bill_id = bill_id;
     }
 
+    public float calculateTotalAmount(HospitalDatabase hd, int id)
+    {
+        db = hd.getReadableDatabase();
+        Cursor c = db.rawQuery("Select * from ward where id = ?", new String[]{String.valueOf(id)});
+
+        return 0;
+    }
 
 
 }
