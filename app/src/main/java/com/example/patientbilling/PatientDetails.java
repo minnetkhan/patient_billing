@@ -16,6 +16,5 @@ public class PatientDetails extends AppCompatActivity {
         Intent intent = getIntent();
         String patientID = intent.getStringExtra(KeyValuePair.KEY_PATIENT_ID);
         Toast.makeText(this, patientID, Toast.LENGTH_SHORT).show();
-
     }
 }
