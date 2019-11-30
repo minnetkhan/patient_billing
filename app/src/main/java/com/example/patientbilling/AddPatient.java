@@ -13,10 +13,10 @@ public class AddPatient extends AppCompatActivity {
 
     SQLiteDatabase db;
     HospitalDatabase hd;
-    EditText e_name, e_contact, e_ep_name, e_ep_contact;
+    EditText e_name, e_contact, e_ep_name, e_ep_contact, e_rn, e_adate;
     Spinner sp_bg, sp_g;
-    String name, ep_name;
-    int contact, ep_contact;
+    String name, ep_name, adate;
+    int contact, ep_contact, room_no;
     Patient p1= new Patient();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +43,12 @@ public class AddPatient extends AppCompatActivity {
         ep_contact  = Integer.parseInt(e_ep_contact.getText().toString());
         e_ep_name   = (EditText)findViewById(R.id.edit_epname);
         ep_name = e_ep_name.getText().toString();
+
+        e_adate = (EditText)findViewById(R.id.edit_adate);
+        adate = e_adate.getText().toString();
+
+        e_rn = (EditText)findViewById(R.id.edit_rn);
+        room_no = Integer.parseInt(e_rn.getText().toString());
 
         hd = new HospitalDatabase(this);
         p1.updateDetails(hd, name, contact, gender_type, blood_type, ep_name, ep_contact);
