@@ -27,10 +27,7 @@ public class Patient extends Person {
         EmergencyPersonContactNumber = emergencyPersonContactNumber;
     }
 
-
-
-
-
+    
 
 }
 
