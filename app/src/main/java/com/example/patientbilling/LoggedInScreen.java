@@ -1,5 +1,6 @@
 package com.example.patientbilling;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,7 +14,7 @@ import android.widget.Toast;
         This class is called after login is successful.
     ...
  */
-public class LoggedInScreen extends AppCompatActivity {
+public class LoggedInScreen extends AppCompatActivity implements PatientIdFragmentDialog.OnCompleteListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,16 @@ public class LoggedInScreen extends AppCompatActivity {
         /*
             goto PatientDetails.java
          */
+
+        PatientIdFragmentDialog dialogFragment = new PatientIdFragmentDialog();
+        dialogFragment.show(getSupportFragmentManager(), "Dialog Fragment");
+
+    }
+
+
+    public void onComplete(String patientID) {
         Intent intent = new Intent(this, PatientDetails.class);
+        intent.putExtra(KeyValuePair.KEY_PATIENT_ID, patientID);
         startActivity(intent);
     }
 
