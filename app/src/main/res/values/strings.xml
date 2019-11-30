@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Patient Billing</string>
-
+    <string name="layout_submit">Submit</string>
+    <string name="layout_cancel">Cancel</string>
 </resources>
