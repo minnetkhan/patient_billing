@@ -1,6 +1,8 @@
 package com.example.patientbilling;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -16,8 +18,8 @@ public class HospitalDatabase extends SQLiteOpenHelper {
                 TablePatient.TablePatientClass.PATIENT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 TablePatient.TablePatientClass.PATIENT_NAME +" VARCHAR(255)," +
                 TablePatient.TablePatientClass.PATIENT_CONTACT_NO +" INT(11), " +
-                TablePatient.TablePatientClass.PATIENT_DOB + " VARCHAR(255), " +
-                TablePatient.TablePatientClass.PATIENT_ADDRESS + " VARCHAR(255), " +
+                TablePatient.TablePatientClass.PATIENT_GENDER + " VARCHAR(255), " +
+                TablePatient.TablePatientClass.PATIENT_BLOODGROUP + " VARCHAR(255), " +
                 TablePatient.TablePatientClass.PATIENT_EP_CONTACT + " INT(11), " +
                 TablePatient.TablePatientClass.PATIENT_EP_NAME + " VARCHAR(255), " +
                 TablePatient.TablePatientClass.PATIENT_CREATED_AT + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP " +
@@ -115,6 +117,37 @@ public class HospitalDatabase extends SQLiteOpenHelper {
     @Override
     public void onConfigure(SQLiteDatabase db){
         db.setForeignKeyConstraintsEnabled(true);
+    }
+
+    public void InsertPatientData(HospitalDatabase hd,  String patient_name, int contact, String gender, String bg, int ep_c, String ep_n)
+    {
+        db = getWritableDatabase();
+        ContentValues c = new ContentValues();
+        c.put(TablePatient.TablePatientClass.PATIENT_NAME , patient_name);
+        c.put(TablePatient.TablePatientClass.PATIENT_CONTACT_NO, contact);
+        c.put(TablePatient.TablePatientClass.PATIENT_GENDER, gender);
+        c.put(TablePatient.TablePatientClass.PATIENT_BLOODGROUP, bg);
+        c.put(TablePatient.TablePatientClass.PATIENT_EP_CONTACT, ep_c);
+        c.put(TablePatient.TablePatientClass.PATIENT_EP_NAME, ep_n);
+        db.insert(TablePatient.TablePatientClass.TABLE_PATIENT, null, c);
+        Log.d("Inside InsertUSerData", "One row inserted");
+    }
+
+    public String GetPatientData()
+    {
+        db = getWritableDatabase();
+        Cursor c = db.rawQuery("Select * from  patient", null );
+        c.moveToFirst();
+        String patient="";
+        for( int i =0; i<c.getCount();i++)
+        {
+            patient = patient+"\n\n Name:"+c.getString(c.getColumnIndex("name"))+"\n Contact No:"+
+                    c.getString(c.getColumnIndex("contact"))+ "\n Gender:"+ c.getString(c.getColumnIndex("gender"))+"\n BloodGroup:" +
+                    c.getString(c.getColumnIndex("bg"))+ "\n Emergency Contact Person Name:"+c.getString(c.getColumnIndex("e_name"))+"\n Emergency Contact Person Number:"+c.getString(c.getColumnIndex("e_contact"))+"";
+            c.moveToNext();
+        }
+
+        return patient;
     }
 
     @Override
