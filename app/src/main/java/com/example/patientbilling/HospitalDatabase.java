@@ -163,13 +163,13 @@ public class HospitalDatabase extends SQLiteOpenHelper {
             c.moveToFirst();
         }
 
-        for( int i =0; i<c.getCount();i++)
-        {
-            patient = patient+"\n\n Name:"+c.getString(c.getColumnIndex("name"))+"\n Contact No:"+
-                    c.getString(c.getColumnIndex("contact"))+ "\n Gender:"+ c.getString(c.getColumnIndex("gender"))+"\n BloodGroup:" +
-                    c.getString(c.getColumnIndex("bg"))+ "\n Emergency Contact Person Name:"+c.getString(c.getColumnIndex("e_name"))+"\n Emergency Contact Person Number:"+c.getString(c.getColumnIndex("e_contact"))+"";
-            c.moveToNext();
+        int count = c.getColumnCount();
+
+        for(int i=0; i<count; i++) {
+            patient = patient + " " + c.getString(i);
         }
+
+        patient = patient.trim();
 
         return patient;
     }

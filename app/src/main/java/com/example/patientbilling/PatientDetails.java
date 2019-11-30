@@ -27,15 +27,27 @@ public class PatientDetails extends AppCompatActivity {
         String patientID = intent.getStringExtra(KeyValuePair.KEY_PATIENT_ID);
 
         HospitalDatabase hospitalDatabase = new HospitalDatabase(this);
-        String patientDetails = hospitalDatabase.getOnePatientData(patientID);
+        String pDetails = hospitalDatabase.getOnePatientData(patientID);
 
+        String patientDetails[] = pDetails.split(" ");
+        TextView tv1 = (TextView) findViewById(R.id.patient_name);
+        tv1.setText(patientDetails[1]);
 
+        TextView tv2 = (TextView) findViewById(R.id.patient_contact);
+        tv2.setText(patientDetails[2]);
 
-        TextView tv = (TextView) findViewById(R.id.OnePatientDetails);
-//        LinearLayout lt = (LinearLayout) findViewById( R.id.patient_details_linear_layout );
-//        TextView tv = (TextView) getLayoutInflater().inflate(R.layout.activity_patient_details, null);
-        tv.setText(patientDetails);
-//        lt.addView(tv);
+        TextView tv3 = (TextView) findViewById(R.id.patient_gender);
+        tv3.setText(patientDetails[3]);
+
+        TextView tv4 = (TextView) findViewById(R.id.patient_blood_group);
+        tv4.setText(patientDetails[4]);
+
+        TextView tv5 = (TextView) findViewById(R.id.patient_emergency_person);
+        tv5.setText(patientDetails[6]);
+
+        TextView tv6 = (TextView) findViewById(R.id.patient_emergency_person_contact);
+        tv6.setText(patientDetails[5]);
+
     }
 
 }
