@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 //import TablePatient;
 
 public class HospitalDatabase extends SQLiteOpenHelper {
@@ -146,6 +147,28 @@ public class HospitalDatabase extends SQLiteOpenHelper {
                     c.getString(c.getColumnIndex("bg"))+ "\n Emergency Contact Person Name:"+c.getString(c.getColumnIndex("e_name"))+"\n Emergency Contact Person Number:"+c.getString(c.getColumnIndex("e_contact"))+"";
             c.moveToNext();
         }
+
+        return patient;
+    }
+
+
+    public String getOnePatientData(String patient_ID) {
+        String patient = "";
+
+        db = getReadableDatabase();
+        Cursor c = db.rawQuery("Select * from patient where id = ?", new String[]{patient_ID});
+
+        if(c != null) {
+            c.moveToFirst();
+        }
+
+        int count = c.getColumnCount();
+
+        for(int i=0; i<count; i++) {
+            patient = patient + " " + c.getString(i);
+        }
+
+        patient = patient.trim();
 
         return patient;
     }
